@@ -124,11 +124,16 @@ h1 {
 
 /* --- Full List --- */
 .all-reminders-heading {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 1rem;
-  text-align: left;
+  font-style: italic;
+  background: linear-gradient(180deg, #ffe563, #e29056);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-transform: lowercase;
 }
 
 .reminder-list {
@@ -161,6 +166,39 @@ h1 {
   background: var(--accent);
   border-left: 3px solid var(--accent-warm);
   font-weight: 600;
+}
+
+/* --- Section headers & descriptions --- */
+.reminder-list li.section-header {
+  background: transparent;
+  border: none;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+  padding: 1.25rem 0 0.25rem 0;
+  margin-bottom: 0;
+}
+
+.reminder-list li.section-header:first-child {
+  padding-top: 0;
+}
+
+.reminder-list li.section-header:hover {
+  background: transparent;
+}
+
+.reminder-list li.section-description {
+  background: transparent;
+  border: none;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-muted);
+  padding: 0 0 0.5rem 0;
+  margin-bottom: 0;
+}
+
+.reminder-list li.section-description:hover {
+  background: transparent;
 }
 
 /* --- Version --- */

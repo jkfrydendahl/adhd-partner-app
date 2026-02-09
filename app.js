@@ -38,17 +38,51 @@ function renderDisplay(reminderIndex) {
   const reminder = reminders[reminderIndex];
   const emoji = dayEmojis[reminderIndex % dayEmojis.length] || "✨";
 
-  document.getElementById('reminder-of-the-day-text').textContent = reminder.text;
+  // Find which section this reminder belongs to
+  let sectionTitle = '';
+  let sectionEmoji = '';
+  let count = 0;
+  for (const section of reminderSections) {
+    if (reminderIndex < count + section.reminders.length) {
+      sectionTitle = section.title;
+      sectionEmoji = section.emoji;
+      break;
+    }
+    count += section.reminders.length;
+  }
+
+  const todayEl = document.getElementById('reminder-of-the-day-text');
+  todayEl.innerHTML = `<strong>${sectionEmoji} ${sectionTitle}</strong><br>${reminder.text}`;
   document.getElementById('reminder-emoji').textContent = `${reminder.emoji} ${emoji}`;
 
-  // Build full list
+  // Build sectioned list
   const list = document.getElementById('reminder-list');
   list.innerHTML = '';
-  reminders.forEach((r, i) => {
-    const li = document.createElement('li');
-    if (i === reminderIndex) li.classList.add('highlighted');
-    li.innerHTML = `<span class="emoji">${r.emoji}</span>${r.text}`;
-    list.appendChild(li);
+
+  let globalIndex = 0;
+  reminderSections.forEach(section => {
+    // Section header
+    const header = document.createElement('li');
+    header.classList.add('section-header');
+    header.innerHTML = `<span class="emoji">${section.emoji}</span>${section.title}`;
+    list.appendChild(header);
+
+    // Section description
+    if (section.description) {
+      const desc = document.createElement('li');
+      desc.classList.add('section-description');
+      desc.textContent = section.description;
+      list.appendChild(desc);
+    }
+
+    // Reminders in this section
+    section.reminders.forEach(r => {
+      const li = document.createElement('li');
+      if (globalIndex === reminderIndex) li.classList.add('highlighted');
+      li.innerHTML = `<span class="emoji">${r.emoji}</span>${r.text}`;
+      list.appendChild(li);
+      globalIndex++;
+    });
   });
 }
 
@@ -86,7 +120,10 @@ function ensureDailyDisplay(forceNew = false) {
   const slot = getCutoverSlot();
   const saved = JSON.parse(localStorage.getItem(DAILY_STATE_KEY) || 'null');
 
-  if (!saved || saved.slot !== slot || forceNew) {
+  // Force refresh if saved index is out of bounds (e.g. reminders array changed)
+  const outOfBounds = saved && (saved.reminderIndex == null || saved.reminderIndex >= reminders.length);
+
+  if (!saved || saved.slot !== slot || forceNew || outOfBounds) {
     const reminderIndex = getWeightedIndex(reminders, 'reminderUsage');
     localStorage.setItem(DAILY_STATE_KEY, JSON.stringify({
       slot,
