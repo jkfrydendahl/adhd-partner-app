@@ -1,0 +1,195 @@
+:root {
+  --primary: #2a9d8f;
+  --primary-light: #3dbaa9;
+  --accent: #e0f5f1;
+  --accent-warm: #f4a261;
+  --background: linear-gradient(135deg, #edf7f6, #e0f5f1);
+  --text: #2d3436;
+  --text-muted: #636e72;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --card-bg: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  background: var(--background);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.container {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 20px var(--shadow);
+  max-width: 640px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: var(--primary);
+}
+
+/* --- Buttons --- */
+.notif-button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(42, 157, 143, 0.1);
+  border: none;
+  color: var(--primary);
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  backdrop-filter: blur(4px);
+}
+.notif-button:hover {
+  background: rgba(42, 157, 143, 0.2);
+  color: #1e7a6f;
+  box-shadow: 0 2px 6px rgba(42, 157, 143, 0.3);
+}
+
+.refresh-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(42, 157, 143, 0.1);
+  border: none;
+  color: var(--primary);
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  backdrop-filter: blur(4px);
+}
+.refresh-button:hover {
+  background: rgba(42, 157, 143, 0.2);
+  color: #1e7a6f;
+  box-shadow: 0 2px 6px rgba(42, 157, 143, 0.3);
+}
+
+/* --- Reminder of the Day --- */
+.reminder-of-the-day {
+  background: var(--accent);
+  border-left: 4px solid var(--primary);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0 1.5rem;
+  text-align: left;
+}
+
+.reminder-of-the-day .label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.reminder-of-the-day .text {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.reminder-emoji {
+  font-size: 2em;
+  margin-top: 0.75rem;
+}
+
+/* --- Divider --- */
+.divider {
+  border: none;
+  border-top: 2px solid var(--accent);
+  margin: 1.5rem 0;
+}
+
+/* --- Full List --- */
+.all-reminders-heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.reminder-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.reminder-list li {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background: #f9fffe;
+  border-radius: 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  border: 1px solid rgba(42, 157, 143, 0.1);
+  transition: background 0.15s;
+}
+
+.reminder-list li:hover {
+  background: var(--accent);
+}
+
+.reminder-list li .emoji {
+  margin-right: 0.5rem;
+}
+
+.reminder-list li.highlighted {
+  background: var(--accent);
+  border-left: 3px solid var(--accent-warm);
+  font-weight: 600;
+}
+
+/* --- Version --- */
+#app-version {
+  margin-top: 2rem;
+  font-size: 0.6rem;
+  color: #9aa0a6;
+  user-select: text;
+}
+
+/* --- Responsive --- */
+@media (max-width: 480px) {
+  body {
+    padding: 1rem 0.5rem;
+  }
+  .container {
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+  h1 {
+    margin-top: 30px;
+    font-size: 1.4rem;
+  }
+  .reminder-of-the-day .text {
+    font-size: 1rem;
+  }
+  .notif-button,
+  .refresh-button {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.75rem;
+  }
+}
