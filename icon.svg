@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="96" fill="#2a9d8f"/>
+
+  <!-- Peace sign -->
+  <g transform="translate(256,256)" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Outer circle -->
+    <circle cx="0" cy="0" r="140"/>
+    <!-- Vertical line -->
+    <line x1="0" y1="-140" x2="0" y2="140"/>
+    <!-- Left leg -->
+    <line x1="0" y1="0" x2="-99" y2="99"/>
+    <!-- Right leg -->
+    <line x1="0" y1="0" x2="99" y2="99"/>
+  </g>
+
+  <!-- Heart in the center -->
+  <g transform="translate(256,256)">
+    <path d="M0,-24 C-10,-44 -44,-44 -44,-16 C-44,16 0,48 0,48 C0,48 44,16 44,-16 C44,-44 10,-44 0,-24Z"
+          fill="#f4a261" stroke="none"/>
+  </g>
+</svg>
