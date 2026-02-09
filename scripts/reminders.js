@@ -2,7 +2,7 @@
 
 const reminderSections = [
   {
-    title: "When your partner is feeling down",
+    title: "If your partner is feeling down",
     emoji: "💙",
     description: "Ask gently:",
     reminders: [
@@ -12,7 +12,7 @@ const reminderSections = [
     ],
   },
   {
-    title: "When there's a mess of unfinished projects",
+    title: "If there's a mess of unfinished projects",
     emoji: "🧩",
     description: "Ask without judgment:",
     reminders: [
@@ -22,7 +22,7 @@ const reminderSections = [
     ],
   },
   {
-    title: "When clothes are lying/hanging everywhere",
+    title: "If clothes are lying/hanging everywhere",
     emoji: "👕",
     description: "Ask with curiosity:",
     reminders: [
@@ -32,7 +32,7 @@ const reminderSections = [
     ],
   },
   {
-    title: "When online orders are left in boxes around the house",
+    title: "If online orders are left in boxes around the house",
     emoji: "📬",
     description: "Ask with interest:",
     reminders: [

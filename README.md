@@ -53,7 +53,3 @@ Edit the `reminders` array in `index.html`. Each entry is:
 ```js
 { text: "Your reminder text here", emoji: "🧠" }
 ```
-
-## Credits
-
-Infrastructure based on the [For My Love](https://github.com/jkfrydendahl/jkfrydendahl.github.io/tree/main/for-my-love-app) PWA.
