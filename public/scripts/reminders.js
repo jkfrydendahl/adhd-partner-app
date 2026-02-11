@@ -48,7 +48,9 @@ const reminderSections = [
 const reminders = reminderSections.flatMap(s => s.reminders);
 
 // Emojis for the "reminder of the day" decorative display
+// (no overlap with reminder or section emojis)
 const dayEmojis = [
-  "🧠", "💡", "🌟", "✨", "💪", "🌈", "🫶", "🧩", "🌻", "🦋",
-  "💚", "🎯", "🌿", "🔆", "🕊️", "💛", "🪷", "🌊", "☀️", "🤗",
+  "🧠", "💡", "🌟", "💪", "🌈", "🫶", "🌻", "🦋",
+  "💚", "🎯", "🌿", "🔆", "🕊️", "🪷", "🌊", "☀️", "🤗",
+  "🍀", "🎈", "🌸",
 ];
