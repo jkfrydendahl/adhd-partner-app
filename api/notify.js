@@ -15,10 +15,9 @@ const DEFAULT_URL   = process.env.DEFAULT_URL || '/';
 webpush.setVapidDetails(VAPID_CONTACT, VAPID_PUBLIC, VAPID_PRIVATE);
 
 export default async function handler(req, res) {
-  // Auth: POST + Bearer (manual / GitHub Actions) OR Vercel Cron header
-  const hasBearer = req.headers.authorization === `Bearer ${NOTIFY_TOKEN}`;
-  const isCron    = req.headers['x-vercel-cron'] === '1'
-                 || typeof req.headers['x-vercel-cron'] !== 'undefined';
+  // Auth: POST + Bearer (manual) OR Vercel Cron header
+  const hasBearer = NOTIFY_TOKEN && req.headers.authorization === `Bearer ${NOTIFY_TOKEN}`;
+  const isCron    = req.headers['x-vercel-cron'] !== undefined;
 
   if (!hasBearer && !isCron) {
     return res.status(401).json({ error: 'Unauthorized' });
