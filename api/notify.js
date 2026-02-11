@@ -25,7 +25,7 @@ export default async function handler(req, res) {
   const dryRun = req.query?.dry === '1';
 
   const payload = JSON.stringify({
-    title: req.body?.title || '🧠 ADHD Partner Reminder',
+    title: req.body?.title || '🧠 New Notification',
     body:  req.body?.body  || 'Your daily reminder is ready!',
     url:   req.body?.url   || '/'
   });
