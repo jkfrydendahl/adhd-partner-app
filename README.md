@@ -72,3 +72,15 @@ Edit the `reminderSections` array in `scripts/reminders.js`. Each section has:
   ],
 }
 ```
+
+## Roadmap
+
+Potential future improvements:
+
+### Features
+[] **Swipe to refresh** — swipe the "Reminder of the Day" card to get a new one mid-day
+[] **"Done" check-off** — mark a reminder as acted-on today, with a subtle visual reward
+[] **Partner mode** — a second view where the ADHD partner can add notes like "today was a good day" or "I'm struggling with X"
+[] **Favourites** — long-press/star a reminder to pin it to a personal list
+[] **Daily streak counter** — track consecutive days the app has been opened as gentle positive reinforcement
+[] **Dark mode** — auto-detect `prefers-color-scheme: dark` with a darker teal/navy palette
