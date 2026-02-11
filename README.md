@@ -1,4 +1,4 @@
-# ADHD Partner Guide
+# ADHD Partner Reminder App
 
 A progressive web app (PWA) that shows daily reminders for how to support a partner with ADHD. Installable on any device, with optional push notifications.
 

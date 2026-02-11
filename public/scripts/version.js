@@ -1,5 +1,5 @@
 // version.js — cache-busting & service worker registration
-const APP_VERSION = '26.2.9.1';
+const APP_VERSION = '26.2.11.3';
 
 (function versionCheck() {
   const prev = localStorage.getItem('app-version');

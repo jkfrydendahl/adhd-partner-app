@@ -9,7 +9,6 @@ const kv = createClient({
 const VAPID_PUBLIC  = process.env.VAPID_PUBLIC_KEY;
 const VAPID_PRIVATE = process.env.VAPID_PRIVATE_KEY;
 const VAPID_CONTACT = process.env.VAPID_CONTACT || 'mailto:you@example.com';
-const DEFAULT_URL   = process.env.DEFAULT_URL || '/';
 
 webpush.setVapidDetails(VAPID_CONTACT, VAPID_PUBLIC, VAPID_PRIVATE);
 
@@ -28,7 +27,7 @@ export default async function handler(req, res) {
   const payload = JSON.stringify({
     title: req.body?.title || '🧠 ADHD Partner Reminder',
     body:  req.body?.body  || 'Your daily reminder is ready!',
-    url:   req.body?.url   || DEFAULT_URL
+    url:   req.body?.url   || '/'
   });
 
   const subs    = await kv.hgetall('subs');
