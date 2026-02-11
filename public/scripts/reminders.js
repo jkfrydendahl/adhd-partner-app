@@ -18,7 +18,7 @@ const reminderSections = [
     reminders: [
       { text: "Looks quite busy here — are you still working on all of this stuff?", emoji: "👀" },
       { text: "Can any of this be paused and put away (and if so, where)?", emoji: "📦" },
-      { text: "Where do you need us to put a note or something to remind you of the things we put away?", emoji: "📝" },
+      { text: "I'd like to move some of these things — where do you need us to put a note or something to remind you of the stuff we put away?", emoji: "📝" },
     ],
   },
   {
@@ -39,7 +39,7 @@ const reminderSections = [
       { text: "What is this? (Sound genuinely interested!)", emoji: "✨" },
       { text: "What should we do next with this?", emoji: "🗺️" },
       { text: "Can we do something about this right now?", emoji: "⏰" },
-      { text: "Do you need or want help?", emoji: "💛" },
+      { text: "Do you need or want help dealing with this?", emoji: "💛" },
     ],
   },
 ];
