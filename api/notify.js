@@ -6,7 +6,6 @@ const kv = createClient({
   token: process.env.adhd_partner_KV_REST_API_TOKEN,
 });
 
-const NOTIFY_TOKEN  = process.env.NOTIFY_TOKEN;
 const VAPID_PUBLIC  = process.env.VAPID_PUBLIC_KEY;
 const VAPID_PRIVATE = process.env.VAPID_PRIVATE_KEY;
 const VAPID_CONTACT = process.env.VAPID_CONTACT || 'mailto:you@example.com';
@@ -15,12 +14,13 @@ const DEFAULT_URL   = process.env.DEFAULT_URL || '/';
 webpush.setVapidDetails(VAPID_CONTACT, VAPID_PUBLIC, VAPID_PRIVATE);
 
 export default async function handler(req, res) {
-  // Auth: POST + Bearer (manual) OR Vercel Cron header
-  const hasBearer = NOTIFY_TOKEN && req.headers.authorization === `Bearer ${NOTIFY_TOKEN}`;
-  const isCron    = req.headers['x-vercel-cron'] !== undefined;
-
-  if (!hasBearer && !isCron) {
-    return res.status(401).json({ error: 'Unauthorized' });
+  // Optional auth: if CRON_SECRET is set, verify the Authorization header
+  const cronSecret = process.env.CRON_SECRET;
+  if (cronSecret) {
+    const authHeader = req.headers.authorization;
+    if (authHeader !== `Bearer ${cronSecret}`) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
   }
 
   const dryRun = req.query?.dry === '1';
