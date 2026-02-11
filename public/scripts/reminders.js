@@ -21,7 +21,7 @@ const reminderSections = [
       { text: "Looks quite busy here — are you still working on all of this stuff?", emoji: "👀" },
       { text: "Can any of this be paused and put away (and if so, where)?", emoji: "📦" },
       { text: "Can we move some of these things out of the way, and where do you need us to put a note or something to remind you of the stuff we put away?", emoji: "📝" },
-      { text: "Which of these are you most excited about?", emoji: "🌱" },
+      { text: "Which of these are you most excited about, and why?", emoji: "🌱" },
       { text: "Would it help if we made a small plan together for just one of these?", emoji: "🗓️" },
     ],
   },
