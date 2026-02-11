@@ -56,7 +56,7 @@ export default async function handler(req, res) {
 
   return res.json({
     ok: true,
-    mode: dryRun ? 'dry' : (isCron ? 'cron' : 'manual'),
+    mode: dryRun ? 'dry' : 'triggered',
     total, sent, removed, errors
   });
 }
