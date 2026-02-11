@@ -1,5 +1,10 @@
-import { kv } from '@vercel/kv';
+import { createClient } from '@vercel/kv';
 import webpush from 'web-push';
+
+const kv = createClient({
+  url: process.env.adhd_partner_KV_REST_API_URL,
+  token: process.env.adhd_partner_KV_REST_API_TOKEN,
+});
 
 const NOTIFY_TOKEN  = process.env.NOTIFY_TOKEN;
 const VAPID_PUBLIC  = process.env.VAPID_PUBLIC_KEY;
