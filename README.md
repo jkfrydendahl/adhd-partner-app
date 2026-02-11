@@ -8,7 +8,6 @@ A progressive web app (PWA) that shows daily reminders for how to support a part
 - **Full list** — all reminders grouped by section, with today's highlighted
 - **Push notifications** — opt-in daily reminders via Vercel Cron + Web Push (4:30 PM CET)
 - **Installable PWA** — add to Home Screen on iOS/Android/desktop
-- **Offline-capable** — works without internet after first load
 
 ## Structure
 
