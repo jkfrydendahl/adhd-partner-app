@@ -1,6 +1,6 @@
 {
-  "name": "ADHD Partner Guide",
-  "short_name": "ADHD Guide",
+  "name": "ADHD Partner App",
+  "short_name": "ADHD Partner",
   "id": "https://adhd-partner-app.vercel.app/",
   "start_url": "./",
   "scope": "./",
