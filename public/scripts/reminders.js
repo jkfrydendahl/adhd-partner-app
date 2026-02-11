@@ -6,9 +6,9 @@ const reminderSections = [
     emoji: "💙",
     description: "Ask gently:",
     reminders: [
-      { text: "What's challenging them right now?", emoji: "🌧️" },
-      { text: "Where in their thought process do they get stuck?", emoji: "🔍" },
-      { text: "Can they manage or do they need help?", emoji: "🤝" },
+      { text: "What's challenging you right now?", emoji: "🌧️" },
+      { text: "Where in your thought process do you get stuck?", emoji: "🔍" },
+      { text: "Can you manage or do you need help?", emoji: "🤝" },
     ],
   },
   {
@@ -18,7 +18,7 @@ const reminderSections = [
     reminders: [
       { text: "Looks quite busy here — are you still working on all of this stuff?", emoji: "👀" },
       { text: "Can any of this be paused and put away (and if so, where)?", emoji: "📦" },
-      { text: "I'd like to move some of these things — where do you need us to put a note or something to remind you of the stuff we put away?", emoji: "📝" },
+      { text: "Can we move some of these things out of the way, and where do you need us to put a note or something to remind you of the stuff we put away?", emoji: "📝" },
     ],
   },
   {
