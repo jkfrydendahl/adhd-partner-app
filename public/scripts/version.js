@@ -8,7 +8,7 @@ const APP_VERSION = '26.2.11.5';
     location.replace(location.pathname + location.search
       + (location.search ? '&' : '?') + 'v=' + APP_VERSION);
   }
-  console.log('ADHD Partner Guide launched – version', APP_VERSION);
+  console.log('ADHD Partner App launched – version', APP_VERSION);
 })();
 
 window.addEventListener('DOMContentLoaded', () => {
