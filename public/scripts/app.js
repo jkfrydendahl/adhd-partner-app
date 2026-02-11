@@ -52,8 +52,8 @@ function renderDisplay(reminderIndex) {
   }
 
   const todayEl = document.getElementById('reminder-of-the-day-text');
-  todayEl.innerHTML = `<strong>${sectionEmoji} ${sectionTitle}</strong><br>${reminder.text}`;
-  document.getElementById('reminder-emoji').textContent = `${reminder.emoji} ${emoji}`;
+  todayEl.innerHTML = `<strong>${sectionTitle} ${sectionEmoji}</strong><br>${reminder.text} ${reminder.emoji}`;
+  document.getElementById('reminder-emoji').textContent = emoji;
 
   // Build sectioned list
   const list = document.getElementById('reminder-list');
@@ -71,7 +71,7 @@ function renderDisplay(reminderIndex) {
     header.classList.add('section-header');
     header.setAttribute('data-section', sectionIndex);
     header.setAttribute('aria-expanded', hasHighlight ? 'true' : 'false');
-    header.innerHTML = `<span class="emoji">${section.emoji}</span>${section.title}<span class="chevron">${hasHighlight ? '▾' : '▸'}</span>`;
+    header.innerHTML = `<span class="chevron">${hasHighlight ? '▾' : '▸'}</span>${section.title} <span class="emoji">${section.emoji}</span>`;
     header.addEventListener('click', () => toggleSection(sectionIndex));
     list.appendChild(header);
 
@@ -94,7 +94,7 @@ function renderDisplay(reminderIndex) {
       const item = document.createElement('div');
       item.classList.add('section-item');
       if (globalIndex === reminderIndex) item.classList.add('highlighted');
-      item.innerHTML = `<span class="emoji">${r.emoji}</span>${r.text}`;
+      item.innerHTML = `${r.text} <span class="emoji">${r.emoji}</span>`;
       wrapper.appendChild(item);
       globalIndex++;
     });

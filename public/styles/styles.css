@@ -172,11 +172,12 @@ h1 {
 .reminder-list li.section-header {
   background: transparent;
   border: none;
+  border-top: 1px solid var(--border);
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--primary);
-  padding: 1.25rem 0 0.25rem 0;
-  margin-bottom: 0;
+  padding: 1rem 0 0.25rem 0;
+  margin-top: 0.5rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -184,14 +185,19 @@ h1 {
 }
 
 .reminder-list li.section-header .chevron {
-  margin-left: auto;
-  font-size: 0.9rem;
+  margin-right: 0.4rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
-  transition: transform 0.2s ease;
+}
+
+.reminder-list li.section-header .emoji {
+  margin-left: 0.3rem;
 }
 
 .reminder-list li.section-header:first-child {
   padding-top: 0;
+  border-top: none;
+  margin-top: 0;
 }
 
 .reminder-list li.section-header:hover {
@@ -231,7 +237,7 @@ h1 {
 }
 
 .reminder-list .section-item .emoji {
-  margin-right: 0.5rem;
+  margin-left: 0.3rem;
 }
 
 .reminder-list .section-item.highlighted {
