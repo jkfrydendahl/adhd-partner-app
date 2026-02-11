@@ -60,30 +60,56 @@ function renderDisplay(reminderIndex) {
   list.innerHTML = '';
 
   let globalIndex = 0;
-  reminderSections.forEach(section => {
-    // Section header
+  reminderSections.forEach((section, sectionIndex) => {
+    // Check if this section contains the highlighted reminder
+    const sectionStart = globalIndex;
+    const sectionEnd = sectionStart + section.reminders.length;
+    const hasHighlight = reminderIndex >= sectionStart && reminderIndex < sectionEnd;
+
+    // Section header (clickable toggle)
     const header = document.createElement('li');
     header.classList.add('section-header');
-    header.innerHTML = `<span class="emoji">${section.emoji}</span>${section.title}`;
+    header.setAttribute('data-section', sectionIndex);
+    header.setAttribute('aria-expanded', hasHighlight ? 'true' : 'false');
+    header.innerHTML = `<span class="emoji">${section.emoji}</span>${section.title}<span class="chevron">${hasHighlight ? '▾' : '▸'}</span>`;
+    header.addEventListener('click', () => toggleSection(sectionIndex));
     list.appendChild(header);
+
+    // Collapsible wrapper
+    const wrapper = document.createElement('li');
+    wrapper.classList.add('section-body');
+    wrapper.setAttribute('data-section-body', sectionIndex);
+    if (!hasHighlight) wrapper.classList.add('collapsed');
 
     // Section description
     if (section.description) {
-      const desc = document.createElement('li');
+      const desc = document.createElement('div');
       desc.classList.add('section-description');
       desc.textContent = section.description;
-      list.appendChild(desc);
+      wrapper.appendChild(desc);
     }
 
     // Reminders in this section
     section.reminders.forEach(r => {
-      const li = document.createElement('li');
-      if (globalIndex === reminderIndex) li.classList.add('highlighted');
-      li.innerHTML = `<span class="emoji">${r.emoji}</span>${r.text}`;
-      list.appendChild(li);
+      const item = document.createElement('div');
+      item.classList.add('section-item');
+      if (globalIndex === reminderIndex) item.classList.add('highlighted');
+      item.innerHTML = `<span class="emoji">${r.emoji}</span>${r.text}`;
+      wrapper.appendChild(item);
       globalIndex++;
     });
+
+    list.appendChild(wrapper);
   });
+}
+
+function toggleSection(sectionIndex) {
+  const header = document.querySelector(`[data-section="${sectionIndex}"]`);
+  const body = document.querySelector(`[data-section-body="${sectionIndex}"]`);
+  const expanded = header.getAttribute('aria-expanded') === 'true';
+  header.setAttribute('aria-expanded', !expanded);
+  header.querySelector('.chevron').textContent = expanded ? '▸' : '▾';
+  body.classList.toggle('collapsed');
 }
 
 // ─────────────────────────────────────────────

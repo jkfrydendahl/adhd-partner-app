@@ -177,6 +177,17 @@ h1 {
   color: var(--primary);
   padding: 1.25rem 0 0.25rem 0;
   margin-bottom: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.reminder-list li.section-header .chevron {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
 }
 
 .reminder-list li.section-header:first-child {
@@ -185,6 +196,48 @@ h1 {
 
 .reminder-list li.section-header:hover {
   background: transparent;
+}
+
+/* --- Collapsible section body --- */
+.reminder-list li.section-body {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  max-height: 1000px;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.reminder-list li.section-body:hover {
+  background: transparent;
+}
+
+.reminder-list li.section-body.collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
+}
+
+.reminder-list .section-item {
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+
+.reminder-list .section-item:hover {
+  background: var(--accent);
+}
+
+.reminder-list .section-item .emoji {
+  margin-right: 0.5rem;
+}
+
+.reminder-list .section-item.highlighted {
+  background: var(--accent);
+  border-left: 3px solid var(--accent-warm);
+  font-weight: 600;
 }
 
 .reminder-list li.section-description {
@@ -199,6 +252,13 @@ h1 {
 
 .reminder-list li.section-description:hover {
   background: transparent;
+}
+
+.section-body .section-description {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-muted);
+  padding: 0.25rem 0.85rem 0.5rem;
 }
 
 /* --- Version --- */
