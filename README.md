@@ -13,21 +13,25 @@ A progressive web app (PWA) that shows daily reminders for how to support a part
 ## Structure
 
 ```
-index.html              ← HTML shell
-styles/styles.css       ← all styles
-scripts/
-  version.js            ← cache-busting + service worker registration
-  push.js               ← Web Push subscription client
-  reminders.js          ← reminder data (4 sections)
-  app.js                ← rendering, weighted random, daily cutover
-sw.js                   ← service worker (push + notification click)
-manifest.webmanifest    ← PWA manifest
-icon.svg                ← app icon source (peace sign + heart)
+public/                   ← static frontend (served as web root)
+  index.html              ← HTML shell
+  styles/styles.css       ← all styles
+  scripts/
+    version.js            ← cache-busting + service worker registration
+    push.js               ← Web Push subscription client
+    reminders.js          ← reminder data (4 sections)
+    app.js                ← rendering, weighted random, daily cutover
+  sw.js                   ← service worker (push + notification click)
+  manifest.webmanifest    ← PWA manifest
+  apple-touch-icon.svg    ← app icon source (peace sign + heart)
+  apple-touch-icon.png    ← iOS home screen icon
+  icon-192.png            ← PWA icon 192×192
+  icon-512.png            ← PWA icon 512×512
 api/
-  subscribe.js          ← stores push subscriptions in Vercel KV
-  notify.js             ← sends push notifications to all subscribers
-vercel.json             ← Vercel Cron config (daily at 15:30 UTC)
-package.json            ← dependencies (@vercel/kv, web-push)
+  subscribe.js            ← stores push subscriptions in Vercel KV
+  notify.js               ← sends push notifications to all subscribers
+vercel.json               ← Vercel Cron config (daily at 15:30 UTC)
+package.json              ← dependencies (@vercel/kv, web-push)
 ```
 
 ## Setup
