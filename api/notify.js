@@ -2,11 +2,12 @@ import { kv } from '@vercel/kv';
 import webpush from 'web-push';
 
 const NOTIFY_TOKEN  = process.env.NOTIFY_TOKEN;
-const VAPID_PUBLIC  = process.env.VAPID_PUBLIC;
-const VAPID_PRIVATE = process.env.VAPID_PRIVATE;
+const VAPID_PUBLIC  = process.env.VAPID_PUBLIC_KEY;
+const VAPID_PRIVATE = process.env.VAPID_PRIVATE_KEY;
+const VAPID_CONTACT = process.env.VAPID_CONTACT || 'mailto:you@example.com';
 const DEFAULT_URL   = process.env.DEFAULT_URL || '/';
 
-webpush.setVapidDetails('mailto:you@example.com', VAPID_PUBLIC, VAPID_PRIVATE);
+webpush.setVapidDetails(VAPID_CONTACT, VAPID_PUBLIC, VAPID_PRIVATE);
 
 export default async function handler(req, res) {
   // Auth: POST + Bearer (manual / GitHub Actions) OR Vercel Cron header

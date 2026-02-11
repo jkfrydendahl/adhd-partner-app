@@ -1,7 +1,5 @@
 // push.js — Web Push notification setup
 
-// ⚠️  Replace with YOUR Vercel backend URL and VAPID public key
-const VERCEL_BACKEND = 'https://adhd-partner-app.vercel.app';
 const PUBLIC_VAPID_KEY = 'BCKV4epyd4Q3P02Fnp67m_ClyCGyhbK0mSxxeQbQ6rs0hcsQu7zLollNprikKFHP5Yu9YNnzGAzF272oHSNCXyQ';
 
 function isIOS() { return /iphone|ipad|ipod/i.test(navigator.userAgent); }
@@ -41,7 +39,7 @@ async function enablePushVerbose() {
     });
     console.log('Push subscribed, endpoint:', sub.endpoint);
 
-    const resp = await fetch(`${VERCEL_BACKEND}/api/subscribe`, {
+    const resp = await fetch('/api/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(sub)
