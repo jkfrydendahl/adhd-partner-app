@@ -4,7 +4,7 @@ A progressive web app (PWA) that shows daily reminders for how to support a part
 
 ## Features
 
-- **Reminder of the Day** — a highlighted tip that rotates daily (at 08:00 local time), showing the context section it belongs to
+- **Reminder of the Day** — a highlighted tip that rotates daily (at 16:00 local time), showing the context section it belongs to
 - **Full list** — all reminders grouped by section, with today's highlighted
 - **Push notifications** — opt-in daily reminders via Vercel Cron + Web Push (4:30 PM CET)
 - **Installable PWA** — add to Home Screen on iOS/Android/desktop

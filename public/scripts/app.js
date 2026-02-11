@@ -96,7 +96,7 @@ function ymdLocal(d) {
   return `${y}-${m}-${day}`;
 }
 
-const CUTOVER_HOUR = 8, CUTOVER_MINUTE = 0;
+const CUTOVER_HOUR = 16, CUTOVER_MINUTE = 0;
 const DAILY_STATE_KEY = `dailyReminderState-${CUTOVER_HOUR}-${CUTOVER_MINUTE}-v1`;
 
 function getCutoverSlot(d = new Date()) {
