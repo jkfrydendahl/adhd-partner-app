@@ -6,8 +6,9 @@ self.addEventListener('push', (event) => {
   try { data = event.data?.json() || {}; } catch {}
   const url = data.url || APP_URL;
   event.waitUntil(
-    self.registration.showNotification(data.title || '🧠 ADHD Partner Reminder', {
-      body: data.body || 'Your daily reminder is ready!',
+    self.registration.showNotification(data.title || '🧠 ADHD Partner App', {
+      body: data.body || 'Your daily partner inspiration is ready!',
+
       data: { url }
     })
   );

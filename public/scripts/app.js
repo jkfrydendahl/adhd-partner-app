@@ -34,37 +34,37 @@ function getWeightedIndex(array, keyPrefix, maxUses = 3) {
 // ─────────────────────────────────────────────
 //  Render
 // ─────────────────────────────────────────────
-function renderDisplay(reminderIndex) {
-  const reminder = reminders[reminderIndex];
-  const emoji = dayEmojis[reminderIndex % dayEmojis.length] || "✨";
+function renderDisplay(inspirationIndex) {
+  const inspiration = inspirations[inspirationIndex];
+  const emoji = dayEmojis[inspirationIndex % dayEmojis.length] || "✨";
 
-  // Find which section this reminder belongs to
+  // Find which section this inspiration belongs to
   let sectionTitle = '';
   let sectionEmoji = '';
   let count = 0;
-  for (const section of reminderSections) {
-    if (reminderIndex < count + section.reminders.length) {
+  for (const section of inspirationSections) {
+    if (inspirationIndex < count + section.inspirations.length) {
       sectionTitle = section.title;
       sectionEmoji = section.emoji;
       break;
     }
-    count += section.reminders.length;
+    count += section.inspirations.length;
   }
 
-  const todayEl = document.getElementById('reminder-of-the-day-text');
-  todayEl.innerHTML = `<strong>${sectionTitle} ${sectionEmoji}</strong><br>${reminder.text} ${reminder.emoji}`;
-  document.getElementById('reminder-emoji').textContent = emoji;
+  const todayEl = document.getElementById('inspiration-of-the-day-text');
+  todayEl.innerHTML = `<strong>${sectionTitle} ${sectionEmoji}</strong><br>${inspiration.text} ${inspiration.emoji}`;
+  document.getElementById('inspiration-emoji').textContent = emoji;
 
   // Build sectioned list
-  const list = document.getElementById('reminder-list');
+  const list = document.getElementById('inspiration-list');
   list.innerHTML = '';
 
   let globalIndex = 0;
-  reminderSections.forEach((section, sectionIndex) => {
-    // Check if this section contains the highlighted reminder
+  inspirationSections.forEach((section, sectionIndex) => {
+    // Check if this section contains the highlighted inspiration
     const sectionStart = globalIndex;
-    const sectionEnd = sectionStart + section.reminders.length;
-    const hasHighlight = reminderIndex >= sectionStart && reminderIndex < sectionEnd;
+    const sectionEnd = sectionStart + section.inspirations.length;
+    const hasHighlight = inspirationIndex >= sectionStart && inspirationIndex < sectionEnd;
 
     // Section header (clickable toggle)
     const header = document.createElement('li');
@@ -89,11 +89,11 @@ function renderDisplay(reminderIndex) {
       wrapper.appendChild(desc);
     }
 
-    // Reminders in this section
-    section.reminders.forEach(r => {
+    // Inspirations in this section
+    section.inspirations.forEach(r => {
       const item = document.createElement('div');
       item.classList.add('section-item');
-      if (globalIndex === reminderIndex) item.classList.add('highlighted');
+      if (globalIndex === inspirationIndex) item.classList.add('highlighted');
       item.innerHTML = `${r.text} <span class="emoji">${r.emoji}</span>`;
       wrapper.appendChild(item);
       globalIndex++;
@@ -123,7 +123,7 @@ function ymdLocal(d) {
 }
 
 const CUTOVER_HOUR = 16, CUTOVER_MINUTE = 0;
-const DAILY_STATE_KEY = `dailyReminderState-${CUTOVER_HOUR}-${CUTOVER_MINUTE}-v1`;
+const DAILY_STATE_KEY = `dailyInspirationState-${CUTOVER_HOUR}-${CUTOVER_MINUTE}-v1`;
 
 function getCutoverSlot(d = new Date()) {
   const now = new Date(d);
@@ -146,19 +146,19 @@ function ensureDailyDisplay(forceNew = false) {
   const slot = getCutoverSlot();
   const saved = JSON.parse(localStorage.getItem(DAILY_STATE_KEY) || 'null');
 
-  // Force refresh if saved index is out of bounds (e.g. reminders array changed)
-  const outOfBounds = saved && (saved.reminderIndex == null || saved.reminderIndex >= reminders.length);
+  // Force refresh if saved index is out of bounds (e.g. inspirations array changed)
+  const outOfBounds = saved && (saved.inspirationIndex == null || saved.inspirationIndex >= inspirations.length);
 
   if (!saved || saved.slot !== slot || forceNew || outOfBounds) {
-    const reminderIndex = getWeightedIndex(reminders, 'reminderUsage');
+    const inspirationIndex = getWeightedIndex(inspirations, 'inspirationUsage');
     localStorage.setItem(DAILY_STATE_KEY, JSON.stringify({
       slot,
-      reminderIndex,
+      inspirationIndex,
       ts: Date.now()
     }));
-    renderDisplay(reminderIndex);
+    renderDisplay(inspirationIndex);
   } else {
-    renderDisplay(saved.reminderIndex);
+    renderDisplay(saved.inspirationIndex);
   }
 
   // Schedule precise flip while the app stays open
@@ -194,7 +194,7 @@ window.addEventListener('pageshow', () => ensureDailyDisplay(), { passive: true 
 // Manual refresh
 window.resetAndRefresh = function () {
   const y = new Date().getFullYear();
-  localStorage.removeItem('reminderUsage-' + y);
+  localStorage.removeItem('inspirationUsage-' + y);
   localStorage.removeItem(DAILY_STATE_KEY);
   location.reload();
 };

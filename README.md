@@ -1,12 +1,12 @@
-# ADHD Partner Reminder App
+# ADHD Partner Inspiration App
 
-A progressive web app (PWA) that shows daily reminders for how to support a partner with ADHD. Installable on any device, with optional push notifications.
+A progressive web app (PWA) that shows daily inspirations for how to support a partner with ADHD. Installable on any device, with optional push notifications.
 
 ## Features
 
-- **Reminder of the Day** — a highlighted tip that rotates daily (at 4:00pm local time), showing the context section it belongs to
-- **Full list** — all reminders grouped by section, with today's highlighted
-- **Push notifications** — opt-in daily reminders via Vercel Cron + Web Push (4:30 PM CET)
+- **Inspiration of the Day** — a highlighted tip that rotates daily (at 4:00pm local time), helping you focusing on your partners well-being
+- **Full list** — all inspirations grouped by section, with today's highlighted
+- **Push notifications** — opt-in daily inspirations via Vercel Cron + Web Push (4:30 PM CET)
 - **Installable PWA** — add to Home Screen on iOS/Android/desktop
 
 ## Structure
@@ -18,7 +18,7 @@ public/                   ← static frontend (served as web root)
   scripts/
     version.js            ← cache-busting + service worker registration
     push.js               ← Web Push subscription client
-    reminders.js          ← reminder data (4 sections)
+    inspirations.js          ← inspiration data (4 sections)
     app.js                ← rendering, weighted random, daily cutover
   sw.js                   ← service worker (push + notification click)
   manifest.webmanifest    ← PWA manifest
@@ -59,24 +59,24 @@ package.json              ← dependencies (@vercel/kv, web-push)
 
 The Vercel Cron job (`vercel.json`) triggers `/api/notify` daily at 15:30 UTC (4:30 PM CET).
 
-### 3. Customising reminders
+### 3. Customising inspirations
 
-Edit the `reminderSections` array in `scripts/reminders.js`. Each section has:
+Edit the `inspirationsSections` array in `scripts/inspirations.js`. Each section has:
 ```js
 {
   title: "If ...",
   emoji: "💙",
   description: "Ask gently:",
-  reminders: [
-    { text: "Your reminder text here", emoji: "🧠" },
+  inspirations: [
+    { text: "Your inspiration text here", emoji: "🧠" },
   ],
 }
 ```
 
 ## Feature Roadmap
-- [ ] **Swipe to refresh.** Swipe the "Reminder of the Day" card to get a new one mid-day
-- [ ] **"Done" check-off.** Mark a reminder as acted-on today, with a subtle visual reward
+- [ ] **Swipe to refresh.** Swipe the "Inspiration of the Day" card to get a new one mid-day
+- [ ] **"Done" check-off.** Mark inspirations as acted-on today, with a subtle visual reward
 - [ ] **Partner mode.** A second view where the ADHD partner can add notes like "today was a good day" or "I'm struggling with X"
-- [ ] **Favourites.** Long-press/star a reminder to pin it to a personal list
+- [ ] **Favourites.** Long-press/star inspirations to pin it to a personal list
 - [ ] **Daily streak counter.** Track consecutive days the app has been opened as gentle positive reinforcement
 - [ ] **Dark mode.** Auto-detect `prefers-color-scheme: dark` with a darker teal/navy palette

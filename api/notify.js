@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 
   const payload = JSON.stringify({
     title: req.body?.title || '🧠 New Notification',
-    body:  req.body?.body  || 'Your daily reminder is ready!',
+    body:  req.body?.body  || 'Your daily inspiration is ready!',
     url:   req.body?.url   || '/'
   });
 

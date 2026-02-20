@@ -85,8 +85,8 @@ h1 {
   box-shadow: 0 2px 6px rgba(42, 157, 143, 0.3);
 }
 
-/* --- Reminder of the Day --- */
-.reminder-of-the-day {
+/* --- Inspiration of the Day --- */
+.inspiration-of-the-day {
   background: var(--accent);
   border-left: 4px solid var(--primary);
   border-radius: 0.75rem;
@@ -95,7 +95,7 @@ h1 {
   text-align: left;
 }
 
-.reminder-of-the-day .label {
+.inspiration-of-the-day .label {
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -104,13 +104,13 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
-.reminder-of-the-day .text {
+.inspiration-of-the-day .text {
   font-size: 1.15rem;
   line-height: 1.5;
   color: var(--text);
 }
 
-.reminder-emoji {
+.inspiration-emoji {
   font-size: 2em;
   margin-top: 0.75rem;
 }
@@ -123,7 +123,7 @@ h1 {
 }
 
 /* --- Full List --- */
-.all-reminders-heading {
+.all-inspirations-heading {
   font-size: 1.5rem;
   font-weight: 700;
   font-style: italic;
@@ -136,14 +136,14 @@ h1 {
   text-transform: lowercase;
 }
 
-.reminder-list {
+.inspiration-list {
   list-style: none;
   padding: 0;
   margin: 0;
   text-align: left;
 }
 
-.reminder-list li {
+.inspiration-list li {
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
   background: #f9fffe;
@@ -154,22 +154,22 @@ h1 {
   transition: background 0.15s;
 }
 
-.reminder-list li:hover {
+.inspiration-list li:hover {
   background: var(--accent);
 }
 
-.reminder-list li .emoji {
+.inspiration-list li .emoji {
   margin-right: 0.5rem;
 }
 
-.reminder-list li.highlighted {
+.inspiration-list li.highlighted {
   background: var(--accent);
   border-left: 3px solid var(--accent-warm);
   font-weight: 600;
 }
 
 /* --- Section headers & descriptions --- */
-.reminder-list li.section-header {
+.inspiration-list li.section-header {
   background: transparent;
   border: none;
   border-top: 1px solid var(--border);
@@ -184,28 +184,28 @@ h1 {
   user-select: none;
 }
 
-.reminder-list li.section-header .chevron {
+.inspiration-list li.section-header .chevron {
   margin-right: 0.4rem;
   font-size: 0.75rem;
   color: var(--text-muted);
 }
 
-.reminder-list li.section-header .emoji {
+.inspiration-list li.section-header .emoji {
   margin-left: 0.3rem;
 }
 
-.reminder-list li.section-header:first-child {
+.inspiration-list li.section-header:first-child {
   padding-top: 0;
   border-top: none;
   margin-top: 0;
 }
 
-.reminder-list li.section-header:hover {
+.inspiration-list li.section-header:hover {
   background: transparent;
 }
 
 /* --- Collapsible section body --- */
-.reminder-list li.section-body {
+.inspiration-list li.section-body {
   background: transparent;
   border: none;
   padding: 0;
@@ -216,37 +216,37 @@ h1 {
   opacity: 1;
 }
 
-.reminder-list li.section-body:hover {
+.inspiration-list li.section-body:hover {
   background: transparent;
 }
 
-.reminder-list li.section-body.collapsed {
+.inspiration-list li.section-body.collapsed {
   max-height: 0;
   opacity: 0;
   padding: 0;
 }
 
-.reminder-list .section-item {
+.inspiration-list .section-item {
   padding: 0.75rem 0.85rem;
   border-bottom: 1px solid var(--border);
   font-size: 0.95rem;
 }
 
-.reminder-list .section-item:hover {
+.inspiration-list .section-item:hover {
   background: var(--accent);
 }
 
-.reminder-list .section-item .emoji {
+.inspiration-list .section-item .emoji {
   margin-left: 0.3rem;
 }
 
-.reminder-list .section-item.highlighted {
+.inspiration-list .section-item.highlighted {
   background: var(--accent);
   border-left: 3px solid var(--accent-warm);
   font-weight: 600;
 }
 
-.reminder-list li.section-description {
+.inspiration-list li.section-description {
   background: transparent;
   border: none;
   font-size: 0.85rem;
@@ -256,7 +256,7 @@ h1 {
   margin-bottom: 0;
 }
 
-.reminder-list li.section-description:hover {
+.inspiration-list li.section-description:hover {
   background: transparent;
 }
 
@@ -288,7 +288,7 @@ h1 {
     margin-top: 30px;
     font-size: 1.4rem;
   }
-  .reminder-of-the-day .text {
+  .inspiration-of-the-day .text {
     font-size: 1rem;
   }
   .notif-button,

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ADHD Partner Reminder</title>
+  <title>ADHD Partner App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="./apple-touch-icon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
@@ -14,28 +14,28 @@
 
 <div class="container">
   <button class="notif-button" id="enable-push">🔔 Notify</button>
-  <button class="refresh-button" onclick="resetAndRefresh()">New tip 🔄</button>
+  <button class="refresh-button" onclick="resetAndRefresh()">New inspiration 🔄</button>
 
-  <h1 class="main-title">ADHD Partner Reminder</h1>
+  <h1 class="main-title">ADHD Partner App</h1>
 
-  <!-- Reminder of the Day -->
-  <div class="reminder-of-the-day">
-    <div class="label">Question of the Day</div>
-    <div class="text" id="reminder-of-the-day-text">Loading…</div>
+  <!-- Daily Partner Inspiration -->
+  <div class="inspiration-of-the-day">
+    <div class="label">Daily Partner Inspiration</div>
+    <div class="text" id="inspiration-of-the-day-text">Loading…</div>
   </div>
-  <div class="reminder-emoji" id="reminder-emoji"></div>
+  <div class="inspiration-emoji" id="inspiration-emoji"></div>
 
   <hr class="divider">
 
   <!-- Full List -->
-  <ul class="reminder-list" id="reminder-list"></ul>
+  <ul class="inspiration-list" id="inspiration-list"></ul>
 
   <div id="app-version"></div>
 </div>
 
 <script src="./scripts/version.js"></script>
 <script src="./scripts/push.js"></script>
-<script src="./scripts/reminders.js"></script>
+<script src="./scripts/inspirations.js"></script>
 <script src="./scripts/app.js"></script>
 
 </body>
