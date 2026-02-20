@@ -123,6 +123,14 @@ h1 {
 }
 
 /* --- Full List --- */
+.list-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 2.5rem 0 2.5rem 0;
+  text-align: center;
+}
+
 .all-inspirations-heading {
   font-size: 1.5rem;
   font-weight: 700;

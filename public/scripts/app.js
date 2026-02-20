@@ -34,44 +34,26 @@ function getWeightedIndex(array, keyPrefix, maxUses = 3) {
 // ─────────────────────────────────────────────
 //  Render
 // ─────────────────────────────────────────────
-function renderDisplay(inspirationIndex) {
-  const inspiration = inspirations[inspirationIndex];
-  const emoji = dayEmojis[inspirationIndex % dayEmojis.length] || "✨";
+function renderDisplay(quoteIndex) {
+  const quote = dailyInspirations[quoteIndex];
+  const emoji = dayEmojis[quoteIndex % dayEmojis.length] || "✨";
 
-  // Find which section this inspiration belongs to
-  let sectionTitle = '';
-  let sectionEmoji = '';
-  let count = 0;
-  for (const section of inspirationSections) {
-    if (inspirationIndex < count + section.inspirations.length) {
-      sectionTitle = section.title;
-      sectionEmoji = section.emoji;
-      break;
-    }
-    count += section.inspirations.length;
-  }
-
+  // Show the daily inspiration quote
   const todayEl = document.getElementById('inspiration-of-the-day-text');
-  todayEl.innerHTML = `<strong>${sectionTitle} ${sectionEmoji}</strong><br>${inspiration.text} ${inspiration.emoji}`;
-  document.getElementById('inspiration-emoji').textContent = emoji;
+  todayEl.innerHTML = quote.text;
+  document.getElementById('inspiration-emoji').textContent = `${quote.emoji} ${emoji}`;
 
-  // Build sectioned list
+  // Build sectioned helper-question list (all collapsed by default)
   const list = document.getElementById('inspiration-list');
   list.innerHTML = '';
 
-  let globalIndex = 0;
   inspirationSections.forEach((section, sectionIndex) => {
-    // Check if this section contains the highlighted inspiration
-    const sectionStart = globalIndex;
-    const sectionEnd = sectionStart + section.inspirations.length;
-    const hasHighlight = inspirationIndex >= sectionStart && inspirationIndex < sectionEnd;
-
     // Section header (clickable toggle)
     const header = document.createElement('li');
     header.classList.add('section-header');
     header.setAttribute('data-section', sectionIndex);
-    header.setAttribute('aria-expanded', hasHighlight ? 'true' : 'false');
-    header.innerHTML = `<span class="chevron">${hasHighlight ? '▾' : '▸'}</span>${section.title} <span class="emoji">${section.emoji}</span>`;
+    header.setAttribute('aria-expanded', 'false');
+    header.innerHTML = `<span class="chevron">▸</span>${section.title} <span class="emoji">${section.emoji}</span>`;
     header.addEventListener('click', () => toggleSection(sectionIndex));
     list.appendChild(header);
 
@@ -79,7 +61,7 @@ function renderDisplay(inspirationIndex) {
     const wrapper = document.createElement('li');
     wrapper.classList.add('section-body');
     wrapper.setAttribute('data-section-body', sectionIndex);
-    if (!hasHighlight) wrapper.classList.add('collapsed');
+    wrapper.classList.add('collapsed');
 
     // Section description
     if (section.description) {
@@ -89,14 +71,12 @@ function renderDisplay(inspirationIndex) {
       wrapper.appendChild(desc);
     }
 
-    // Inspirations in this section
+    // Questions in this section
     section.inspirations.forEach(r => {
       const item = document.createElement('div');
       item.classList.add('section-item');
-      if (globalIndex === inspirationIndex) item.classList.add('highlighted');
       item.innerHTML = `${r.text} <span class="emoji">${r.emoji}</span>`;
       wrapper.appendChild(item);
-      globalIndex++;
     });
 
     list.appendChild(wrapper);
@@ -146,19 +126,19 @@ function ensureDailyDisplay(forceNew = false) {
   const slot = getCutoverSlot();
   const saved = JSON.parse(localStorage.getItem(DAILY_STATE_KEY) || 'null');
 
-  // Force refresh if saved index is out of bounds (e.g. inspirations array changed)
-  const outOfBounds = saved && (saved.inspirationIndex == null || saved.inspirationIndex >= inspirations.length);
+  // Force refresh if saved index is out of bounds (e.g. dailyInspirations array changed)
+  const outOfBounds = saved && (saved.quoteIndex == null || saved.quoteIndex >= dailyInspirations.length);
 
   if (!saved || saved.slot !== slot || forceNew || outOfBounds) {
-    const inspirationIndex = getWeightedIndex(inspirations, 'inspirationUsage');
+    const quoteIndex = getWeightedIndex(dailyInspirations, 'inspirationUsage');
     localStorage.setItem(DAILY_STATE_KEY, JSON.stringify({
       slot,
-      inspirationIndex,
+      quoteIndex,
       ts: Date.now()
     }));
-    renderDisplay(inspirationIndex);
+    renderDisplay(quoteIndex);
   } else {
-    renderDisplay(saved.inspirationIndex);
+    renderDisplay(saved.quoteIndex);
   }
 
   // Schedule precise flip while the app stays open
