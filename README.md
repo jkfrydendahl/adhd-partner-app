@@ -1,13 +1,13 @@
 # ADHD Partner Inspiration App
 
-A progressive web app (PWA) that shows daily inspirations for how to support a partner with ADHD. Installable on any device, with optional push notifications.
+A progressive web app (PWA) that helps you show love and support to your ADHD partner. Each day it surfaces a short, actionable inspiration — something to say or do — plus a reference list of helpful questions for common situations. Installable on any device, with optional push notifications.
 
 ## Features
 
-- **Inspiration of the Day** — a highlighted tip that rotates daily (at 4:00pm local time), helping you focusing on your partners well-being
-- **Full list** — all inspirations grouped by section, with today's highlighted
-- **Push notifications** — opt-in daily inspirations via Vercel Cron + Web Push (4:30 PM CET)
-- **Installable PWA** — add to Home Screen on iOS/Android/desktop
+- **Daily Partner Inspiration.** A rotating quote (things to say or do) that changes daily at 4:00 PM local time
+- **"Need Some Guidance?".** A collapsible list of helpful questions grouped by situation (partner feeling down, unfinished projects, etc.)
+- **Push notifications.** Opt-in daily inspirations via Vercel Cron + Web Push (4:30 PM CET)
+- **Installable PWA.** Add to Home Screen on iOS/Android/desktop
 
 ## Structure
 
@@ -18,7 +18,7 @@ public/                   ← static frontend (served as web root)
   scripts/
     version.js            ← cache-busting + service worker registration
     push.js               ← Web Push subscription client
-    inspirations.js          ← inspiration data (4 sections)
+    inspirations.js          ← daily inspiration quotes + helper question data
     app.js                ← rendering, weighted random, daily cutover
   sw.js                   ← service worker (push + notification click)
   manifest.webmanifest    ← PWA manifest
@@ -59,16 +59,21 @@ package.json              ← dependencies (@vercel/kv, web-push)
 
 The Vercel Cron job (`vercel.json`) triggers `/api/notify` daily at 15:30 UTC (4:30 PM CET).
 
-### 3. Customising inspirations
+### 3. Customising content
 
-Edit the `inspirationsSections` array in `scripts/inspirations.js`. Each section has:
+**Daily inspiration quotes** — edit the `dailyInspirations` array in `scripts/inspirations.js`:
+```js
+{ text: "Tell them: \"I trust you.\"", emoji: "🔐" },
+```
+
+**Helper question list** — edit the `inspirationSections` array in the same file. Each section has:
 ```js
 {
-  title: "If ...",
+  title: "If your partner is feeling down",
   emoji: "💙",
   description: "Ask gently:",
   inspirations: [
-    { text: "Your inspiration text here", emoji: "🧠" },
+    { text: "What's challenging you right now?", emoji: "🌧️" },
   ],
 }
 ```
